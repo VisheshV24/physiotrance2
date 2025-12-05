@@ -9,7 +9,7 @@ import {
   PenTool,
   Users,
   Database,
-  TrendingUp,
+  Copyright,
   Search,
 } from 'lucide-react';
 
@@ -28,7 +28,7 @@ const services = [
   },
   {
     icon: FileText,
-    title: 'Thesis Writing & Building',
+    title: 'Thesis Guidance & Building',
     description:
       'Professional thesis writing, structuring, and compilation services for all academic levels.',
   },
@@ -75,10 +75,10 @@ const services = [
       'Comprehensive writing assistance for research papers, articles, and academic content.',
   },
   {
-    icon: TrendingUp,
-    title: 'Digital Marketing for Research',
+    icon: Copyright,
+    title: 'Copyright Services',
     description:
-      'Enhance visibility and reach of your research through strategic digital promotion.',
+      'Secure legal protection for your research with professional copyright registration and documentation.',
   },
   {
     icon: Search,

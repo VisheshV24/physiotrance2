@@ -12,9 +12,9 @@ export default function Footer() {
               <img
                 src={logo}
                 alt="PhysioTrance Logo"
-                className="h-10 w-10 object-contain"
+                className="h-12 w-12 object-contain"
               />
-              <span className="text-xl font-bold">PhysioTrance</span>
+              <span className="text-xl font-bold">PhysioTrance Academy</span>
             </div>
             <p className="text-gray-400 leading-relaxed">
               Your trusted partner in research publication and academic
