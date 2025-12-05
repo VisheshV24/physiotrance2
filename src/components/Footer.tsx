@@ -14,7 +14,7 @@ export default function Footer() {
                 alt="PhysioTrance Logo"
                 className="h-12 w-12 object-contain"
               />
-              <span className="text-xl font-bold">PhysioTrance Academy</span>
+              <span className="text-xl font-bold">Physiotrance Academy</span>
             </div>
             <p className="text-gray-400 leading-relaxed">
               Your trusted partner in research publication and academic
@@ -128,7 +128,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="text-center text-gray-400">
             <p>
-              &copy; {new Date().getFullYear()} PhysioTrance. All rights
+              &copy; {new Date().getFullYear()} Physiotrance Academy. All rights
               reserved.
             </p>
           </div>

@@ -7,10 +7,10 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              About PhysioTrance
+              About Physiotrance  
             </h2>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              PhysioTrance is a premier research and publication support
+              Physiotrance is a premier research and publication support
               organization dedicated to empowering researchers, scholars, and
               academic institutions worldwide.
             </p>
