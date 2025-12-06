@@ -1,12 +1,26 @@
-import { Menu, X, GraduationCap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png'
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      // We're already on home page, just scroll
+      const element = document.getElementById(id);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }
     setIsOpen(false);
   };
 
@@ -14,16 +28,25 @@ export default function Navbar() {
     <nav className="bg-white shadow-md fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-3">
+          <button
+            onClick={() => {
+              if (location.pathname !== '/') {
+                navigate('/');
+              } else {
+                scrollToSection('home');
+              }
+            }}
+            className="flex items-center space-x-3 hover:opacity-80 transition"
+          >
             <img
-                src={logo}
-                alt="PhysioTrance Logo"
-                className="h-12 w-12 object-contain"
-              />
+              src={logo}
+              alt="PhysioTrance Logo"
+              className="h-12 w-12 object-contain"
+            />
             <span className="text-2xl font-bold text-gray-800">
               Physiotrance Academy
             </span>
-          </div>
+          </button>
 
           <div className="hidden md:flex items-center space-x-8">
             <button
@@ -56,12 +79,12 @@ export default function Navbar() {
             >
               Contact
             </button>
-            <a
-              href="#register"
+            <button
+              onClick={() => scrollToSection('register')}
               className="bg-teal-600 text-white px-6 py-2 rounded-full hover:bg-teal-700 transition transform hover:scale-105"
             >
               Register Service
-            </a>
+            </button>
           </div>
 
           <button
@@ -106,12 +129,12 @@ export default function Navbar() {
             >
               Contact
             </button>
-            <a
-              href="#register"
+            <button
+              onClick={() => scrollToSection('register')}
               className="block w-full text-center px-3 py-2 bg-teal-600 text-white rounded hover:bg-teal-700"
             >
               Register Service
-            </a>
+            </button>
           </div>
         </div>
       )}

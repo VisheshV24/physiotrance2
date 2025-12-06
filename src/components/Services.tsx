@@ -129,10 +129,20 @@ export default function Services() {
             );
           })}
         </div>
+        <div className="text-center mt-12">
+          <a
+            href="/all-services"
+            className="inline-flex items-center px-8 py-4 bg-teal-600 text-white rounded-full font-semibold hover:bg-teal-700 transition transform hover:scale-105 shadow-lg"
+          >
+            View All Academic Services
+          </a>
+        </div>
+
 
         <div className="text-center mt-12">
           <a
-            href="#register"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfBNhMxLokXhG8VEbRT1sJrQxJKGXtX7b1C4y45yeZjc7c62g/viewform?vc=0&c=0&w=1&flr=0"
+
             className="inline-flex items-center px-8 py-4 bg-teal-600 text-white rounded-full font-semibold hover:bg-teal-700 transition transform hover:scale-105 shadow-lg"
           >
             Register for a Service
