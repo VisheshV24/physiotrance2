@@ -28,6 +28,15 @@ export default function AllServices() {
     "Other (Customized Services)"
   ];
 
+  const otherEServices = [
+    "Logo Trademark Registration",
+    "ISO Registration",
+    "MSME/UDYAM Registration",
+    "Company Registration , Pvt. Ltd, Section 8",
+    "ITR/ IT Returns & Filing",
+    "Website Development"
+  ];
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-5xl mx-auto px-6">
@@ -46,10 +55,25 @@ export default function AllServices() {
           ))}
         </ul>
 
+        <div className="mt-16">
+          <h2 className="text-3xl font-semibold text-gray-900 mb-6 text-center">
+            Other E-Services
+          </h2>
+          <ul className="space-y-4 text-lg text-gray-800">
+            {otherEServices.map((service, index) => (
+              <li
+                key={index}
+                className="p-4 bg-gray-100 rounded-lg hover:bg-teal-50 border border-gray-200"
+              >
+                {index + 1}. {service}
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <div className="text-center mt-12">
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSfBNhMxLokXhG8VEbRT1sJrQxJKGXtX7b1C4y45yeZjc7c62g/viewform?vc=0&c=0&w=1&flr=0"
-
             className="px-8 py-4 bg-teal-600 text-white rounded-full font-semibold hover:bg-teal-700 transition"
           >
             Register for a Service
