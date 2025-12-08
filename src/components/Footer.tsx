@@ -1,4 +1,4 @@
-import { GraduationCap, Facebook, Twitter, Linkedin, Instagram, Star } from 'lucide-react';
+import { Instagram, Star, Youtube } from 'lucide-react';
 import logo from '../assets/logo.png';
 
 export default function Footer() {
@@ -75,6 +75,14 @@ export default function Footer() {
                   Contact
                 </button>
               </li>
+              <li>
+                <a
+                  href="/all-services"
+                  className="text-gray-400 hover:text-teal-400 transition"
+                >
+                  All Services
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -96,22 +104,12 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
             <div className="flex space-x-4 mb-6">
               <a
-                href="#"
+                href="https://www.youtube.com/@AIMPHYSIOENTRANCE"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition"
               >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition"
-              >
-                <Linkedin className="h-5 w-5" />
+                <Youtube className="h-5 w-5" />
               </a>
               <a
                 href="https://www.instagram.com/physio_research_hub/"
