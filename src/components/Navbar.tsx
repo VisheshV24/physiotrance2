@@ -2,25 +2,31 @@ import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png'
+import specialtyGroupsImage from '../assets/Join Speciality Groups Button Design.png';
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   const scrollToSection = (id: string) => {
-    // If we're not on the home page, navigate there first
-    if (location.pathname !== '/') {
-      navigate('/');
-      // Wait for navigation to complete, then scroll
+    const isSpeciality = id === 'speciality-groups';
+
+    // Handle navigation for speciality groups page vs home sections
+    if (isSpeciality && location.pathname !== '/all-services') {
+      navigate('/all-services');
       setTimeout(() => {
-        const element = document.getElementById(id);
-        element?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else if (!isSpeciality && location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     } else {
-      // We're already on home page, just scroll
-      const element = document.getElementById(id);
-      element?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
+
     setIsOpen(false);
   };
 
@@ -80,10 +86,14 @@ export default function Navbar() {
               Contact
             </button>
             <button
-              onClick={() => scrollToSection('register')}
-              className="bg-teal-600 text-white px-6 py-2 rounded-full hover:bg-teal-700 transition transform hover:scale-105"
+              onClick={() => scrollToSection('speciality-groups')}
+              className="transition transform hover:scale-105"
             >
-              Register Service
+              <img 
+                src={specialtyGroupsImage} 
+                alt="Join Speciality Groups" 
+                className="h-12 object-contain cursor-pointer" 
+              />
             </button>
           </div>
 
@@ -130,11 +140,16 @@ export default function Navbar() {
               Contact
             </button>
             <button
-              onClick={() => scrollToSection('register')}
-              className="block w-full text-center px-3 py-2 bg-teal-600 text-white rounded hover:bg-teal-700"
+              onClick={() => scrollToSection('speciality-groups')}
+              className="transition transform hover:scale-105 w-full flex justify-center"
             >
-              Register Service
+              <img 
+                src={specialtyGroupsImage} 
+                alt="Join Speciality Groups" 
+                className="h-12 object-contain cursor-pointer" 
+              />
             </button>
+
           </div>
         </div>
       )}

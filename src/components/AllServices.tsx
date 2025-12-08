@@ -1,3 +1,5 @@
+import logo from "../assets/logo.png";
+
 export default function AllServices() {
   const allServices = [
     "BPT UG Coaching Class- 3000/Month (full course 6 months), if only 1 Subject (1200/month)",
@@ -35,6 +37,25 @@ export default function AllServices() {
     "Company Registration , Pvt. Ltd, Section 8",
     "ITR/ IT Returns & Filing",
     "Website Development"
+  ];
+
+  const specialityGroups = [
+    {
+      name: "PhysioRehab Job Updates 6",
+      link: "https://chat.whatsapp.com/IAqMsLf9gRHAt0s96QHkuR?mode=hqrt1"
+    },
+    {
+      name: "PHYSIO_RESEARCH_HUB 03",
+      link: "https://chat.whatsapp.com/Jm6Plj1iMYFKe6ExqAORDK?mode=hqrt1"
+    },
+    {
+      name: "PhysioTrance Community",
+      link: "https://chat.whatsapp.com/CtkYKqZMIxfKxXNwBkc7pf"
+    },
+    {
+      name: "Speciality Network Hub",
+      link: "https://chat.whatsapp.com/HGZ8RDwOzOcIP85LCdUBAd?mode=hqrt1"
+    }
   ];
 
   return (
@@ -78,6 +99,48 @@ export default function AllServices() {
           >
             Register for a Service
           </a>
+        </div>
+
+        <div id="speciality-groups" className="mt-16 scroll-mt-32">
+          <h2 className="text-3xl font-semibold text-gray-900 mb-6 text-center">
+            Join Speciality Groups Now
+          </h2>
+          <p className="text-center text-gray-600 mb-8">
+            Connect with peers, stay updated on jobs, research, education, and webinars.
+          </p>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {specialityGroups.map((group) => (
+              <div
+                key={group.link}
+                className="flex items-center p-5 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition"
+              >
+                <div className="flex-shrink-0 mr-4">
+                  <img
+                    src={logo}
+                    alt={`${group.name} logo`}
+                    className="h-16 w-16 object-contain rounded-full border border-gray-100"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {group.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Tap to join the official WhatsApp group.
+                  </p>
+                </div>
+                <a
+                  href={group.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-4 inline-flex items-center px-4 py-2 bg-teal-600 text-white rounded-full font-semibold hover:bg-teal-700 transition"
+                >
+                  Join
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
