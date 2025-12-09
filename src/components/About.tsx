@@ -1,4 +1,6 @@
 import { Target, Eye, Award, Users } from 'lucide-react';
+import isoCertification from '../assets/iso_physiotrance.jpg';
+import msmeRegistration from '../assets/msme_physiotrance.jpg';
 
 export default function About() {
   return (
@@ -87,6 +89,40 @@ export default function About() {
             <p className="text-gray-600">
               Personalized assistance at every step of your research journey.
             </p>
+          </div>
+        </div>
+
+        {/* Certifications & Registrations Section */}
+        <div className="mt-16 pt-12 border-t border-gray-200">
+          <div className="text-center mb-8">
+            <h3 className="text-3xl font-semibold mb-3 text-gray-900">
+              Certifications & Registrations
+            </h3>
+            <p className="text-gray-600 text-lg">
+              Our commitment to quality and compliance
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <div className="flex flex-col items-center">
+              <img
+                src={isoCertification}
+                alt="ISO 9001 Certified"
+                className="h-32 w-32 md:h-40 md:w-40 object-contain hover:scale-105 transition-transform duration-300 shadow-md rounded-lg"
+              />
+              <p className="text-gray-700 text-sm mt-3 text-center font-medium">
+                ISO 9001 Certified
+              </p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img
+                src={msmeRegistration}
+                alt="MSME Registration - Government of India"
+                className="h-32 w-32 md:h-40 md:w-40 object-contain hover:scale-105 transition-transform duration-300 shadow-md rounded-lg"
+              />
+              <p className="text-gray-700 text-sm mt-3 text-center font-medium">
+                MSME Registered
+              </p>
+            </div>
           </div>
         </div>
       </div>
