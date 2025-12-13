@@ -1,9 +1,30 @@
 import { Instagram, Star, Youtube } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function Footer() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToSection = (id: string) => {
+    const isSpeciality = id === 'speciality-groups';
+
+    if (isSpeciality && location.pathname !== '/all-services') {
+      navigate('/all-services');
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else if (!isSpeciality && location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <footer
@@ -37,11 +58,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <button
-                  onClick={() =>
-                    document
-                      .getElementById('home')
-                      ?.scrollIntoView({ behavior: 'smooth' })
-                  }
+                  onClick={() => scrollToSection('home')}
                   className="text-gray-400 hover:text-teal-400 transition"
                 >
                   Home
@@ -49,11 +66,7 @@ export default function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() =>
-                    document
-                      .getElementById('services')
-                      ?.scrollIntoView({ behavior: 'smooth' })
-                  }
+                  onClick={() => scrollToSection('services')}
                   className="text-gray-400 hover:text-teal-400 transition"
                 >
                   Services
@@ -61,11 +74,7 @@ export default function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() =>
-                    document
-                      .getElementById('about')
-                      ?.scrollIntoView({ behavior: 'smooth' })
-                  }
+                  onClick={() => scrollToSection('about')}
                   className="text-gray-400 hover:text-teal-400 transition"
                 >
                   About Us
@@ -73,11 +82,7 @@ export default function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() =>
-                    document
-                      .getElementById('contact')
-                      ?.scrollIntoView({ behavior: 'smooth' })
-                  }
+                  onClick={() => scrollToSection('contact')}
                   className="text-gray-400 hover:text-teal-400 transition"
                 >
                   Contact
