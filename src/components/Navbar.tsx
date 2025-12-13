@@ -37,7 +37,7 @@ export default function Navbar() {
       </div>
 
       {/* NAVBAR */}
-      <nav className="bg-white shadow-md fixed w-full top-6 z-40">
+      <nav className="bg-white shadow-md fixed w-full top-6 z-40 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <button
@@ -57,20 +57,40 @@ export default function Navbar() {
             </button>
 
             <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-teal-600 transition">
+              <button
+                onClick={() => scrollToSection('home')}
+                className="text-gray-700 hover:text-teal-600 transition-all duration-300 relative group"
+              >
                 Home
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
-              <button onClick={() => scrollToSection('services')} className="text-gray-700 hover:text-teal-600 transition">
+              <button
+                onClick={() => scrollToSection('services')}
+                className="text-gray-700 hover:text-teal-600 transition-all duration-300 relative group"
+              >
                 Services
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
-              <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-teal-600 transition">
+              <button
+                onClick={() => scrollToSection('about')}
+                className="text-gray-700 hover:text-teal-600 transition-all duration-300 relative group"
+              >
                 About
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
-              <button onClick={() => scrollToSection('process')} className="text-gray-700 hover:text-teal-600 transition">
+              <button
+                onClick={() => scrollToSection('process')}
+                className="text-gray-700 hover:text-teal-600 transition-all duration-300 relative group"
+              >
                 Process
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-teal-600 transition">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="text-gray-700 hover:text-teal-600 transition-all duration-300 relative group"
+              >
                 Contact
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
 
               {/* Speciality button */}

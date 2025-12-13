@@ -1,28 +1,45 @@
 import { Target, Eye, Award, Users } from 'lucide-react';
 import isoCertification from '../assets/iso_physiotrance.jpg';
 import msmeRegistration from '../assets/msme_physiotrance.jpg';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function About() {
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: textRef, isVisible: textVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-teal-50">
+    <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-teal-50" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div>
+          <div
+            ref={textRef}
+            className={`transition-all duration-1000 ${
+              textVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               About Physiotrance  
             </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+            <p className={`text-lg text-gray-700 mb-6 leading-relaxed transition-all duration-700 delay-100 ${
+              textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
               Physiotrance is a premier research and publication support
               organization dedicated to empowering researchers, scholars, and
               academic institutions worldwide.
             </p>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+            <p className={`text-lg text-gray-700 mb-6 leading-relaxed transition-all duration-700 delay-200 ${
+              textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
               With years of expertise in academic publishing, we provide
               comprehensive support services that help researchers navigate the
               complex landscape of scholarly publication and achieve their
               academic goals.
             </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className={`text-lg text-gray-700 leading-relaxed transition-all duration-700 delay-300 ${
+              textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
               Our team of experienced professionals understands the challenges
               faced by researchers and offers personalized solutions to ensure
               your work reaches the right audience through prestigious indexed
@@ -30,70 +47,59 @@ export default function About() {
             </p>
           </div>
 
-          <div className="relative">
+          <div
+            ref={imageRef}
+            className={`relative transition-all duration-1000 delay-300 ${
+              imageVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-10 scale-95'
+            }`}
+          >
             <img
               src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Research Team"
-              className="rounded-2xl shadow-2xl"
+              className="rounded-2xl shadow-2xl transition-transform duration-500 hover:scale-105"
             />
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="bg-white p-8 rounded-xl shadow-lg text-center transform hover:scale-105 transition">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Target className="h-8 w-8 text-teal-600" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              Our Mission
-            </h3>
-            <p className="text-gray-600">
-              To facilitate seamless research publication and support academic
-              excellence globally.
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-xl shadow-lg text-center transform hover:scale-105 transition">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Eye className="h-8 w-8 text-teal-600" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              Our Vision
-            </h3>
-            <p className="text-gray-600">
-              To be the most trusted partner in research and academic
-              publication services.
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-xl shadow-lg text-center transform hover:scale-105 transition">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Award className="h-8 w-8 text-teal-600" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              Excellence
-            </h3>
-            <p className="text-gray-600">
-              Committed to delivering quality services that meet international
-              standards.
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-xl shadow-lg text-center transform hover:scale-105 transition">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Users className="h-8 w-8 text-teal-600" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              Support
-            </h3>
-            <p className="text-gray-600">
-              Personalized assistance at every step of your research journey.
-            </p>
-          </div>
+        <div
+          ref={cardsRef}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {[
+            { icon: Target, title: 'Our Mission', text: 'To facilitate seamless research publication and support academic excellence globally.' },
+            { icon: Eye, title: 'Our Vision', text: 'To be the most trusted partner in research and academic publication services.' },
+            { icon: Award, title: 'Excellence', text: 'Committed to delivering quality services that meet international standards.' },
+            { icon: Users, title: 'Support', text: 'Personalized assistance at every step of your research journey.' },
+          ].map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={index}
+                className={`bg-white p-8 rounded-xl shadow-lg text-center transition-all duration-500 transform hover:scale-105 hover:shadow-xl ${
+                  cardsVisible
+                    ? 'opacity-100 translate-y-0 scale-100'
+                    : 'opacity-0 translate-y-8 scale-95'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:bg-teal-600 hover:scale-110">
+                  <Icon className="h-8 w-8 text-teal-600 transition-colors duration-300 hover:text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 transition-colors duration-300 hover:text-teal-600">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 transition-colors duration-300 hover:text-gray-700">
+                  {item.text}
+                </p>
+              </div>
+            );
+          })}
         </div>
 
         {/* Certifications & Registrations Section */}
-        <div className="mt-16 pt-12 border-t border-gray-200">
+        <div className={`mt-16 pt-12 border-t border-gray-200 transition-all duration-700 delay-500 ${
+          sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           <div className="text-center mb-8">
             <h3 className="text-3xl font-semibold mb-3 text-gray-900">
               Certifications & Registrations
@@ -103,26 +109,29 @@ export default function About() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <div className="flex flex-col items-center">
-              <img
-                src={isoCertification}
-                alt="ISO 9001 Certified"
-                className="h-32 w-32 md:h-40 md:w-40 object-contain hover:scale-105 transition-transform duration-300 shadow-md rounded-lg"
-              />
-              <p className="text-gray-700 text-sm mt-3 text-center font-medium">
-                ISO 9001 Certified
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <img
-                src={msmeRegistration}
-                alt="MSME Registration - Government of India"
-                className="h-32 w-32 md:h-40 md:w-40 object-contain hover:scale-105 transition-transform duration-300 shadow-md rounded-lg"
-              />
-              <p className="text-gray-700 text-sm mt-3 text-center font-medium">
-                MSME Registered
-              </p>
-            </div>
+            {[
+              { src: isoCertification, alt: 'ISO 9001 Certified', label: 'ISO 9001 Certified' },
+              { src: msmeRegistration, alt: 'MSME Registration - Government of India', label: 'MSME Registered' },
+            ].map((cert, index) => (
+              <div
+                key={index}
+                className={`flex flex-col items-center transition-all duration-700 ${
+                  sectionVisible
+                    ? 'opacity-100 translate-y-0 scale-100'
+                    : 'opacity-0 translate-y-8 scale-95'
+                }`}
+                style={{ transitionDelay: `${600 + index * 100}ms` }}
+              >
+                <img
+                  src={cert.src}
+                  alt={cert.alt}
+                  className="h-32 w-32 md:h-40 md:w-40 object-contain hover:scale-110 transition-all duration-300 shadow-md rounded-lg hover:shadow-xl"
+                />
+                <p className="text-gray-700 text-sm mt-3 text-center font-medium">
+                  {cert.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

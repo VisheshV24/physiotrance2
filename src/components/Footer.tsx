@@ -1,9 +1,17 @@
 import { Instagram, Star, Youtube } from 'lucide-react';
 import logo from '../assets/logo.png';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function Footer() {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer
+      ref={ref}
+      className={`bg-gray-900 text-white pt-16 pb-8 transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           
@@ -107,17 +115,17 @@ export default function Footer() {
                 href="https://www.youtube.com/@AIMPHYSIOENTRANCE"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition-all duration-300 transform hover:scale-110 hover:rotate-12"
               >
-                <Youtube className="h-5 w-5" />
+                <Youtube className="h-5 w-5 transition-transform duration-300 hover:scale-125" />
               </a>
               <a
                 href="https://www.instagram.com/physio_research_hub/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition-all duration-300 transform hover:scale-110 hover:rotate-12"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram className="h-5 w-5 transition-transform duration-300 hover:scale-125" />
               </a>
             </div>
 

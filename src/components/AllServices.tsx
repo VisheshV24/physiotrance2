@@ -1,4 +1,5 @@
 import logo from "../assets/logo.png";
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function AllServices() {
   const allServices = [
@@ -30,14 +31,6 @@ export default function AllServices() {
     "Other (Customized Services)"
   ];
 
-  const medicalEngineeringServices = [
-    "MBBS - Research, Patents, Copyrights & Publications",
-    "BDS - Research, Patents, Copyrights & Publications",
-    "Nursing - Research, Patents, Copyrights & Publications",
-    "Pharmacy - Research, Patents, Copyrights & Publications",
-    "Engineering - Research, Patents, Copyrights & Publications"
-  ];
-
   const otherEServices = [
     "Logo Trademark Registration",
     "ISO Registration",
@@ -66,41 +59,52 @@ export default function AllServices() {
     }
   ];
 
+  // Animation hooks for different sections
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: servicesRef, isVisible: servicesVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: otherServicesRef, isVisible: otherServicesVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: buttonRef, isVisible: buttonVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: groupsRef, isVisible: groupsVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-5xl mx-auto px-6">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+        <h1 
+          ref={titleRef}
+          className={`text-4xl font-bold text-gray-900 mb-8 text-center transition-all duration-1000 ${
+            titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+          }`}
+        >
           Complete Academic Services
         </h1>
 
-        <ul className="space-y-4 text-lg text-gray-700">
+        <ul 
+          ref={servicesRef}
+          className="space-y-4 text-lg text-gray-700"
+        >
           {allServices.map((service, index) => (
             <li
               key={index}
-              className="p-4 bg-gray-100 rounded-lg hover:bg-teal-50 border border-gray-200"
+              className={`p-4 bg-gray-100 rounded-lg hover:bg-teal-50 border border-gray-200 transition-all duration-500 hover:scale-[1.02] hover:shadow-md ${
+                servicesVisible 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 -translate-x-10'
+              }`}
+              style={{
+                transitionDelay: servicesVisible ? `${index * 50}ms` : '0ms'
+              }}
             >
               {index + 1}. {service}
             </li>
           ))}
         </ul>
 
-        <div className="mt-16">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6 text-center">
-            Medical & Engineering Faculty Services
-          </h2>
-          <ul className="space-y-4 text-lg text-gray-800">
-            {medicalEngineeringServices.map((service, index) => (
-              <li
-                key={index}
-                className="p-4 bg-gray-100 rounded-lg hover:bg-teal-50 border border-gray-200"
-              >
-                {index + 1}. {service}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-16">
+        <div 
+          ref={otherServicesRef}
+          className={`mt-16 transition-all duration-1000 ${
+            otherServicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-3xl font-semibold text-gray-900 mb-6 text-center">
             Other E-Services
           </h2>
@@ -108,7 +112,14 @@ export default function AllServices() {
             {otherEServices.map((service, index) => (
               <li
                 key={index}
-                className="p-4 bg-gray-100 rounded-lg hover:bg-teal-50 border border-gray-200"
+                className={`p-4 bg-gray-100 rounded-lg hover:bg-teal-50 border border-gray-200 transition-all duration-500 hover:scale-[1.02] hover:shadow-md ${
+                  otherServicesVisible 
+                    ? 'opacity-100 translate-x-0' 
+                    : 'opacity-0 translate-x-10'
+                }`}
+                style={{
+                  transitionDelay: otherServicesVisible ? `${index * 50}ms` : '0ms'
+                }}
               >
                 {index + 1}. {service}
               </li>
@@ -116,34 +127,58 @@ export default function AllServices() {
           </ul>
         </div>
 
-        <div className="text-center mt-12">
+        <div 
+          ref={buttonRef}
+          className={`text-center mt-12 transition-all duration-1000 ${
+            buttonVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
+          }`}
+        >
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSfBNhMxLokXhG8VEbRT1sJrQxJKGXtX7b1C4y45yeZjc7c62g/viewform?vc=0&c=0&w=1&flr=0"
-            className="px-8 py-4 bg-teal-600 text-white rounded-full font-semibold hover:bg-teal-700 transition"
+            className="inline-block px-8 py-4 bg-teal-600 text-white rounded-full font-semibold hover:bg-teal-700 transition-all duration-300 transform hover:scale-110 hover:shadow-xl hover:shadow-teal-500/50"
           >
             Register for a Service
           </a>
         </div>
 
-        <div id="speciality-groups" className="mt-16 scroll-mt-32">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6 text-center">
+        <div 
+          id="speciality-groups" 
+          ref={groupsRef}
+          className="mt-16 scroll-mt-32"
+        >
+          <h2 
+            className={`text-3xl font-semibold text-gray-900 mb-6 text-center transition-all duration-1000 ${
+              groupsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+            }`}
+          >
             Join Speciality Groups Now
           </h2>
-          <p className="text-center text-gray-600 mb-8">
+          <p 
+            className={`text-center text-gray-600 mb-8 transition-all duration-1000 delay-200 ${
+              groupsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             Connect with peers, stay updated on jobs, research, education, and webinars.
           </p>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {specialityGroups.map((group) => (
+            {specialityGroups.map((group, index) => (
               <div
                 key={group.link}
-                className="flex items-center p-5 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition"
+                className={`flex items-center p-5 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-500 hover:scale-[1.03] hover:border-teal-300 ${
+                  groupsVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-10'
+                }`}
+                style={{
+                  transitionDelay: groupsVisible ? `${index * 100}ms` : '0ms'
+                }}
               >
                 <div className="flex-shrink-0 mr-4">
                   <img
                     src={logo}
                     alt={`${group.name} logo`}
-                    className="h-16 w-16 object-contain rounded-full border border-gray-100"
+                    className="h-16 w-16 object-contain rounded-full border border-gray-100 transition-transform duration-300 hover:scale-110"
                   />
                 </div>
                 <div className="flex-1">
@@ -158,7 +193,7 @@ export default function AllServices() {
                   href={group.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="ml-4 inline-flex items-center px-4 py-2 bg-teal-600 text-white rounded-full font-semibold hover:bg-teal-700 transition"
+                  className="ml-4 inline-flex items-center px-4 py-2 bg-teal-600 text-white rounded-full font-semibold hover:bg-teal-700 transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                 >
                   Join
                 </a>
