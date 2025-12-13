@@ -30,6 +30,14 @@ export default function AllServices() {
     "Other (Customized Services)"
   ];
 
+  const medicalEngineeringServices = [
+    "MBBS - Research, Patents, Copyrights & Publications",
+    "BDS - Research, Patents, Copyrights & Publications",
+    "Nursing - Research, Patents, Copyrights & Publications",
+    "Pharmacy - Research, Patents, Copyrights & Publications",
+    "Engineering - Research, Patents, Copyrights & Publications"
+  ];
+
   const otherEServices = [
     "Logo Trademark Registration",
     "ISO Registration",
@@ -75,6 +83,22 @@ export default function AllServices() {
             </li>
           ))}
         </ul>
+
+        <div className="mt-16">
+          <h2 className="text-3xl font-semibold text-gray-900 mb-6 text-center">
+            Medical & Engineering Faculty Services
+          </h2>
+          <ul className="space-y-4 text-lg text-gray-800">
+            {medicalEngineeringServices.map((service, index) => (
+              <li
+                key={index}
+                className="p-4 bg-gray-100 rounded-lg hover:bg-teal-50 border border-gray-200"
+              >
+                {index + 1}. {service}
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div className="mt-16">
           <h2 className="text-3xl font-semibold text-gray-900 mb-6 text-center">
