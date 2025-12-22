@@ -136,7 +136,7 @@ export default function Footer() {
 
             {/* ⭐ Write a Review Button */}
             <a
-            href="https://maps.app.goo.gl/oNYQjtmHVv1AY4AQ7"
+            href="https://g.page/r/CSOBms1ed-cqEBM/review"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Leave a Google review"
